@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "ble-presence-detector": {
+      "hosting": {
+        "presence-detector": [
+          "ble-presence-detector"
+        ]
+      }
+    }
+  }
+}

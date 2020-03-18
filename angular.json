@@ -37,6 +37,7 @@
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+              "baseHref": "./",
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -122,7 +123,7 @@
           }
         },
         "deploy": {
-          "builder": "@angular/fire:deploy",
+          "builder": "angular-cli-ghpages:deploy",
           "options": {}
         }
       }

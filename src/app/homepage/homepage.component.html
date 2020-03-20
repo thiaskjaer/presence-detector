@@ -15,7 +15,24 @@
                     <mat-card-title>Data</mat-card-title>
                 </mat-card-header>
                 <mat-card-content class="dashboard-card-content">
-
+                    
+                    <table class="mat-table" >
+                        <tr class="mat-header-row">
+                          <th class="h1">Date and Time</th>
+                          <th class="h1">{{device0}}</th>
+                          <th class="h1">{{device1}}</th>
+                          <th class="h1">{{device2}}</th>
+                          
+                        </tr>
+                        <tr class="mat-header-row" *ngFor="let element of data">
+                            <th class="mat-header-cell"><h2>{{element["dateTime"]}}</h2></th>
+                            <th class="mat-header-cell"><h2>{{element["device0"]}}</h2></th>
+                            <th class="mat-header-cell"><h2>{{element["device1"]}}</h2></th>
+                            <th class="mat-header-cell"><h2>{{element["device2"]}}</h2></th>
+                        </tr>
+                    </table>
+                      
+                      
                 </mat-card-content>
                 <mat-card-actions align="end">
                 </mat-card-actions>
@@ -73,14 +90,12 @@
                             <th class="mat-header-cell" *ngIf="!device0Status"><p>Not home</p></th>
 
                             <th class="mat-header-cell" *ngIf="device1Status"><mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon></th>
-                            <th class="mat-header-cell" *ngIf="!device1Status"><mat-icon aria-hidden="false" aria-label="Example home icon">out</mat-icon></th>
+                            <th class="mat-header-cell" *ngIf="!device1Status"><p>Not home</p></th>
                             
                             <th class="mat-header-cell" *ngIf="device2Status"><mat-icon aria-hidden="false" aria-label="Example home icon">home</mat-icon></th>
-                            <th class="mat-header-cell" *ngIf="!device2Status"><mat-icon aria-hidden="false" aria-label="Example home icon">out</mat-icon></th>
-
+                            <th class="mat-header-cell" *ngIf="!device2Status"><p>Not home</p></th>
                         </tr>
-
-                      </table>
+                    </table>
 
                 </mat-card-content>
                 <mat-card-actions align="end">

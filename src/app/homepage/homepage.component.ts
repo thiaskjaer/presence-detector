@@ -14,6 +14,7 @@ import { HttpClient } from '@angular/common/http';
 export class HomepageComponent implements OnInit {
 
   deviceNames: any; //JSON object
+  data: any;
   device0: string;
   device1: string;
   device2: string;
@@ -21,8 +22,6 @@ export class HomepageComponent implements OnInit {
   device0Status: number;
   device1Status: number;
   device2Status: number;
-
-  displayedColumns: string[] = ['device0Status', 'device1Status', 'device2Status'];
 
   constructor(
     private deviceNameService: DeviceNameService,
@@ -32,13 +31,14 @@ export class HomepageComponent implements OnInit {
   ngOnInit() {
     this.getDeviceNames();
     this.getDeviceStatus();
+    this.getData();
   }
+
   getDeviceStatus() {
     this.http.get<any>('https://ble-presence-detector.firebaseio.com/status.json').subscribe(data => {
       this.device0Status = data['device0'];
       this.device1Status = data['device1'];
       this.device2Status = data['device2'];
-      console.log(this.device0Status);
     })
   }
 
@@ -48,6 +48,16 @@ export class HomepageComponent implements OnInit {
       this.device0 = data['device0'];
       this.device1 = data['device1'];
       this.device2 = data['device2'];
+    })
+  }
+
+  getData(){
+    this.http.get<any>('https://ble-presence-detector.firebaseio.com/timestamps.json').subscribe(data => {
+      var res = [];
+      for (var x in data){
+        data.hasOwnProperty(x) && res.push(data[x])
+      }
+      this.data = res.reverse();
     })
   }
 
